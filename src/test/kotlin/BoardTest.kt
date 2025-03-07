@@ -1,13 +1,14 @@
 import nl.ns.dojo.Board
 import kotlin.test.Test
-import kotlin.test.assertEquals
 import kotlin.test.assertIs
+import kotlin.test.assertTrue
 
 class BoardTest {
+    private val board = Board()
+
     @Test
     fun `Given an instance of Board, Then instance is created`() {
         // Given
-        val board = Board()
 
         // Then
         assertIs<Board>(board)
@@ -16,7 +17,7 @@ class BoardTest {
     @Test
     fun `Given an empty Board, Then an empty 3 by 3 matrix is returned`() {
         // Given
-        val board = Board()
+        val currentBoard = board.getBoard()
 
         val expectedBoard = arrayOf(
             arrayOf(" ", " ", " "),
@@ -25,9 +26,6 @@ class BoardTest {
         )
 
         // Then
-        assertEquals(
-            expected = expectedBoard,
-            actual = board.getBoard()
-        )
+        assertTrue(currentBoard.contentDeepEquals(expectedBoard))
     }
 }
