@@ -24,6 +24,8 @@ class BoardTest {
     @Test
     fun `Given an empty Board, Then an empty 3 by 3 matrix is returned`() {
         // Given
+
+        // Then
         val currentBoard = board.getBoard()
 
         val expectedBoard = arrayOf(
@@ -32,15 +34,17 @@ class BoardTest {
             arrayOf(" ", " ", " ")
         )
 
-        // Then
         assertTrue(currentBoard.contentDeepEquals(expectedBoard))
     }
 
     @Test
     fun `Given an empty Board, When adding a X at (0,0), Then a X in the top left is returned`() {
         // Given
+
+        // When
         board.addMove(0,0,"X")
 
+        // Then
         val currentBoard = board.getBoard()
 
         val expectedBoard = arrayOf(
@@ -49,7 +53,6 @@ class BoardTest {
             arrayOf(" ", " ", " ")
         )
 
-        // Then
         assertTrue(currentBoard.contentDeepEquals(expectedBoard))
     }
 }
