@@ -5,7 +5,12 @@ class Board {
 
     fun getBoard(): Array<Array<String>> = board
 
-    fun addMove(row: Int, column: Int, symbol: String) {
-        board[row][column] = symbol
+    fun addMove(row: Int, column: Int, symbol: String): Boolean {
+        return if(board[row][column] == " ") {
+            board[row][column] = symbol
+            true
+        } else {
+            false
+        }
     }
 }
