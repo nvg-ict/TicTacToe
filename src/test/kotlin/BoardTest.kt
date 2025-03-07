@@ -1,10 +1,17 @@
 import nl.ns.dojo.Board
+import org.junit.jupiter.api.BeforeEach
 import kotlin.test.Test
 import kotlin.test.assertIs
 import kotlin.test.assertTrue
 
 class BoardTest {
-    private val board = Board()
+    private lateinit var board: Board
+
+    @BeforeEach
+    fun setUp() {
+        // Initialize the board before each test
+        board = Board()
+    }
 
     @Test
     fun `Given an instance of Board, Then instance is created`() {
@@ -21,6 +28,23 @@ class BoardTest {
 
         val expectedBoard = arrayOf(
             arrayOf(" ", " ", " "),
+            arrayOf(" ", " ", " "),
+            arrayOf(" ", " ", " ")
+        )
+
+        // Then
+        assertTrue(currentBoard.contentDeepEquals(expectedBoard))
+    }
+
+    @Test
+    fun `Given an empty Board, When adding a X at (0,0), Then a X in the top left is returned`() {
+        // Given
+        board.addMove(0,0,"X")
+
+        val currentBoard = board.getBoard()
+
+        val expectedBoard = arrayOf(
+            arrayOf("X", " ", " "),
             arrayOf(" ", " ", " "),
             arrayOf(" ", " ", " ")
         )

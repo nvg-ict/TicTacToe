@@ -7,4 +7,8 @@ class Board {
             arrayOf(" ", " ", " "),
             arrayOf(" ", " ", " ")
         )
+
+    fun addMove(row: Int, column: Int, symbol: String) {
+
+    }
 }
