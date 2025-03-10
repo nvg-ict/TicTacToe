@@ -1,4 +1,5 @@
 import nl.ns.dojo.Board
+import nl.ns.dojo.BoardImpl
 import org.junit.jupiter.api.BeforeEach
 import kotlin.test.Test
 import kotlin.test.assertFalse
@@ -11,7 +12,7 @@ class BoardTest {
     @BeforeEach
     fun setUp() {
         // Initialize the board before each test
-        board = Board()
+        board = BoardImpl()
     }
 
     @Test

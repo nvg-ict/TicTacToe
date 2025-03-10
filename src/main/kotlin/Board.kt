@@ -1,11 +1,16 @@
 package nl.ns.dojo
 
-class Board {
+interface Board {
+    fun getBoard(): Array<Array<String>>
+    fun addMove(row: Int, column: Int, symbol: String): Boolean
+}
+
+class BoardImpl: Board {
     private val board: Array<Array<String>> = Array(3) { Array (3) { " " } }
 
-    fun getBoard(): Array<Array<String>> = board
+    override fun getBoard(): Array<Array<String>> = board
 
-    fun addMove(row: Int, column: Int, symbol: String): Boolean {
+    override fun addMove(row: Int, column: Int, symbol: String): Boolean {
         return if(board[row][column] == " ") {
             board[row][column] = symbol
             true

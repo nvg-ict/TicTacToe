@@ -10,6 +10,7 @@ repositories {
 }
 
 dependencies {
+    testImplementation("io.mockk:mockk:1.13.5")
     testImplementation(kotlin("test"))
 }
 
