@@ -11,6 +11,7 @@ repositories {
 
 dependencies {
     testImplementation("io.mockk:mockk:1.13.5")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.9.3")
     testImplementation(kotlin("test"))
 }
 
