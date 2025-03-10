@@ -2,7 +2,16 @@ package nl.ns.dojo
 
 class Bot {
     fun getRandomMove(board: Array<Array<String>>): Pair<Int, Int>? {
-        return Pair(100,100)
-    }
+        val emptyCells = mutableListOf<Pair<Int, Int>>()
 
+        for (row in board.indices) {
+            for (col in board[row].indices) {
+                if (board[row][col] == " ") {
+                    emptyCells.add(row to col)
+                }
+            }
+        }
+
+        return emptyCells.random()
+    }
 }
