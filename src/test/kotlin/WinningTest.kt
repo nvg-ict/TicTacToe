@@ -1,24 +1,19 @@
-import io.mockk.every
-import io.mockk.mockk
-import nl.ns.dojo.Board
-import nl.ns.dojo.Game
+import nl.ns.dojo.Winning
 import org.junit.jupiter.api.Assertions.assertFalse
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.MethodSource
 import java.util.stream.Stream
-import kotlin.test.Test
-import kotlin.test.assertIs
 import kotlin.test.assertTrue
 
-class GameTest {
-    @Test
-    fun `Given an instance of Game, Then instance is created`() {
-        // Given
-        val game = Game(board = mockk<Board>())
+class WinningTest {
+    private lateinit var winning: Winning
 
-        // Then
-        assertIs<Game>(game)
+    @BeforeEach
+    fun setup() {
+        winning = Winning()
     }
+
     companion object {
         @JvmStatic
         fun provideWinningBoards(): Stream<Array<Array<String>>> = Stream.of(
@@ -76,14 +71,11 @@ class GameTest {
 
     @ParameterizedTest
     @MethodSource("provideWinningBoards")
-    fun `Given a winning board, When game checks win, Then win is given`(boardState: Array<Array<String>>) {
+    fun `Given a winning board, When game checks win, Then win is given`(winningBoard: Array<Array<String>>) {
         // Given
-        val mockedBoard = mockk<Board>()
-        every { mockedBoard.getBoard() } returns boardState
-        val game = Game(board = mockedBoard)
 
         // When
-        val result = game.isWon()
+        val result = winning(winningBoard)
 
         // Then
         assertTrue(result)
@@ -91,14 +83,11 @@ class GameTest {
 
     @ParameterizedTest
     @MethodSource("provideNotWinningBoards")
-    fun `Given a non-winning board, When game checks win, Then win is not given`(boardState: Array<Array<String>>) {
+    fun `Given a non-winning board, When game checks win, Then win is not given`(notWinningBoard: Array<Array<String>>) {
         // Given
-        val mockedBoard = mockk<Board>()
-        every { mockedBoard.getBoard() } returns boardState
-        val game = Game(board = mockedBoard)
 
         // When
-        val result = game.isWon()
+        val result = winning(notWinningBoard)
 
         // Then
         assertFalse(result)

@@ -1,8 +1,9 @@
 package nl.ns.dojo
 
-class Game(val board: Board) {
-    fun isWon(): Boolean {
-        val board = board.getBoard()
+typealias BoardCanvas = Array<Array<String>>
+
+class Winning {
+    operator fun invoke(board: BoardCanvas): Boolean {
         // Check rows
         for (row in board) {
             if (row[0] != " " && row[0] == row[1] && row[1] == row[2]) {
