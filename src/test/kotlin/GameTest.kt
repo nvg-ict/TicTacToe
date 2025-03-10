@@ -41,6 +41,11 @@ class GameTest {
                 arrayOf("O", "X", "O"),
                 arrayOf("O", "X", "O"),
                 arrayOf("X", "O", "O")
+            ),
+            arrayOf( // Winning diagonal
+                arrayOf("X", " ", "O"),
+                arrayOf(" ", "X", " "),
+                arrayOf("O", " ", "X")
             )
         )
 
