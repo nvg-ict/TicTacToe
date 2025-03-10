@@ -1,6 +1,7 @@
 import nl.ns.dojo.Board
 import org.junit.jupiter.api.BeforeEach
 import kotlin.test.Test
+import kotlin.test.assertFalse
 import kotlin.test.assertIs
 import kotlin.test.assertTrue
 
@@ -54,5 +55,17 @@ class BoardTest {
         )
 
         assertTrue(currentBoard.contentDeepEquals(expectedBoard))
+    }
+
+    @Test
+    fun `Given an empty Board with a X at (0,0), When adding a O on that position, Then the add function returns false`() {
+        // Given
+        board.addMove(0,0,"X")
+
+        // When
+        val result = board.addMove(0,0,"O")
+
+        // Then
+        assertFalse(result)
     }
 }
