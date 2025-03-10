@@ -1,3 +1,4 @@
+import nl.ns.dojo.Game
 import kotlin.test.Test
 import kotlin.test.assertIs
 
