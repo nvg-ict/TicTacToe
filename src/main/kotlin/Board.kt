@@ -2,12 +2,12 @@ package nl.ns.dojo
 
 
 class Board {
-    private val board: Array<Array<String>> = Array(3) { Array (3) { " " } }
+    private val board: Array<Array<Field>> = Array(3) { Array (3) { Field.Empty } }
 
-    fun getBoard(): Array<Array<String>> = board
+    fun getBoard(): Array<Array<Field>> = board
 
-    fun addMove(row: Int, column: Int, symbol: String): Boolean {
-        return if(board[row][column] == " ") {
+    fun addMove(row: Int, column: Int, symbol: Field): Boolean {
+        return if(board[row][column] == Field.Empty) {
             board[row][column] = symbol
             true
         } else {

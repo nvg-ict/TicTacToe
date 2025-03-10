@@ -1,4 +1,5 @@
 import nl.ns.dojo.Board
+import nl.ns.dojo.Field
 import org.junit.jupiter.api.BeforeEach
 import kotlin.test.Test
 import kotlin.test.assertFalse
@@ -30,9 +31,9 @@ class BoardTest {
         val currentBoard = board.getBoard()
 
         val expectedBoard = arrayOf(
-            arrayOf(" ", " ", " "),
-            arrayOf(" ", " ", " "),
-            arrayOf(" ", " ", " ")
+            arrayOf(Field.Empty, Field.Empty, Field.Empty),
+            arrayOf(Field.Empty, Field.Empty, Field.Empty),
+            arrayOf(Field.Empty, Field.Empty, Field.Empty),
         )
 
         assertTrue(currentBoard.contentDeepEquals(expectedBoard))
@@ -43,15 +44,15 @@ class BoardTest {
         // Given
 
         // When
-        board.addMove(0,0,"X")
+        board.addMove(0,0, Field.X)
 
         // Then
         val currentBoard = board.getBoard()
 
         val expectedBoard = arrayOf(
-            arrayOf("X", " ", " "),
-            arrayOf(" ", " ", " "),
-            arrayOf(" ", " ", " ")
+            arrayOf(Field.X, Field.Empty, Field.Empty),
+            arrayOf(Field.Empty, Field.Empty, Field.Empty),
+            arrayOf(Field.Empty, Field.Empty, Field.Empty),
         )
 
         assertTrue(currentBoard.contentDeepEquals(expectedBoard))
@@ -60,10 +61,10 @@ class BoardTest {
     @Test
     fun `Given an empty Board with a X at (0,0), When adding a O on that position, Then the add function returns false`() {
         // Given
-        board.addMove(0,0,"X")
+        board.addMove(0,0, Field.X)
 
         // When
-        val result = board.addMove(0,0,"O")
+        val result = board.addMove(0,0, Field.O)
 
         // Then
         assertFalse(result)

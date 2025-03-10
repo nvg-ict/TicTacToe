@@ -1,4 +1,5 @@
 import nl.ns.dojo.Bot
+import nl.ns.dojo.Field
 import kotlin.test.*
 
 class BotTest {
@@ -8,9 +9,9 @@ class BotTest {
     fun `Given an empty board, when the bot generates a move, then a position is given`() {
         // Given
         val board = arrayOf(
-            arrayOf(" ", " ", " "),
-            arrayOf(" ", " ", " "),
-            arrayOf(" ", " ", " ")
+            arrayOf(Field.Empty, Field.Empty, Field.Empty),
+            arrayOf(Field.Empty, Field.Empty, Field.Empty),
+            arrayOf(Field.Empty, Field.Empty, Field.Empty)
         )
 
         // When
@@ -27,9 +28,9 @@ class BotTest {
     fun `Given an full board, when the bot generates a move, then null is returned`() {
         // Given
         val board = arrayOf(
-            arrayOf("X", "X", "X"),
-            arrayOf("X", "X", "X"),
-            arrayOf("X", "X", "X"),
+            arrayOf(Field.X, Field.X, Field.X),
+            arrayOf(Field.X, Field.X, Field.X),
+            arrayOf(Field.X, Field.X, Field.X)
         )
 
         // When
@@ -43,9 +44,9 @@ class BotTest {
     fun `Given a partially filled board, When bot moves, Then move is in an empty cell`() {
         // Given
         val board = arrayOf(
-            arrayOf("X", " ", "O"),
-            arrayOf(" ", "X", " "),
-            arrayOf("O", " ", "X")
+            arrayOf(Field.X, Field.Empty, Field.O),
+            arrayOf(Field.Empty, Field.X, Field.Empty),
+            arrayOf(Field.O, Field.Empty, Field.X)
         )
 
         // When
@@ -54,6 +55,6 @@ class BotTest {
         // Then
         assertNotNull(move)
         val (row, col) = move
-        assertEquals(" ", board[row][col])
+        assertEquals(Field.Empty, board[row][col])
     }
 }

@@ -1,3 +1,4 @@
+import nl.ns.dojo.Field
 import nl.ns.dojo.Winning
 import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.BeforeEach
@@ -16,62 +17,62 @@ class WinningTest {
 
     companion object {
         @JvmStatic
-        fun provideWinningBoards(): Stream<Array<Array<String>>> = Stream.of(
+        fun provideWinningBoards(): Stream<Array<Array<Field>>> = Stream.of(
             arrayOf( // Winning row
-                arrayOf("X", "X", "X"),
-                arrayOf(" ", " ", " "),
-                arrayOf(" ", " ", " ")
+                arrayOf(Field.X, Field.X, Field.X),
+                arrayOf(Field.Empty, Field.Empty, Field.Empty),
+                arrayOf(Field.Empty, Field.Empty, Field.Empty)
             ),
             arrayOf( // Winning column
-                arrayOf("O", " ", " "),
-                arrayOf("O", " ", " "),
-                arrayOf("O", " ", " ")
+                arrayOf(Field.O, Field.Empty, Field.Empty),
+                arrayOf(Field.O, Field.Empty, Field.Empty),
+                arrayOf(Field.O, Field.Empty, Field.Empty)
             ),
             arrayOf( // Complex winning row
-                arrayOf("O", "X", "O"),
-                arrayOf("O", "O", "X"),
-                arrayOf("X", "X", "X")
+                arrayOf(Field.O, Field.X, Field.O),
+                arrayOf(Field.O, Field.O, Field.X),
+                arrayOf(Field.X, Field.X, Field.X)
             ),
             arrayOf( // Complex winning column
-                arrayOf("O", "X", "O"),
-                arrayOf("O", "X", "O"),
-                arrayOf("X", "O", "O")
+                arrayOf(Field.O, Field.X, Field.O),
+                arrayOf(Field.O, Field.X, Field.O),
+                arrayOf(Field.X, Field.O, Field.O)
             ),
             arrayOf( // Winning diagonal
-                arrayOf("X", " ", "O"),
-                arrayOf(" ", "X", " "),
-                arrayOf("O", " ", "X")
+                arrayOf(Field.X, Field.Empty, Field.O),
+                arrayOf(Field.Empty, Field.X, Field.Empty),
+                arrayOf(Field.O, Field.Empty, Field.X)
             ),
             arrayOf( // Winning diagonal 2
-                arrayOf("X", " ", "O"),
-                arrayOf(" ", "O", " "),
-                arrayOf("O", " ", "X")
+                arrayOf(Field.X, Field.Empty, Field.O),
+                arrayOf(Field.Empty, Field.O, Field.Empty),
+                arrayOf(Field.O, Field.Empty, Field.X)
             )
         )
 
         @JvmStatic
-        fun provideNotWinningBoards(): Stream<Array<Array<String>>> = Stream.of(
+        fun provideNotWinningBoards(): Stream<Array<Array<Field>>> = Stream.of(
             arrayOf(
-                arrayOf("O", " ", " "),
-                arrayOf("O", " ", " "),
-                arrayOf(" ", " ", " ")
+                arrayOf(Field.O, Field.Empty, Field.Empty),
+                arrayOf(Field.O, Field.Empty, Field.Empty),
+                arrayOf(Field.Empty, Field.Empty, Field.Empty)
             ),
             arrayOf(
-                arrayOf("X", " ", " "),
-                arrayOf("X", " ", " "),
-                arrayOf("O", "O", " ")
+                arrayOf(Field.X, Field.Empty, Field.Empty),
+                arrayOf(Field.X, Field.Empty, Field.Empty),
+                arrayOf(Field.O, Field.O, Field.Empty)
             ),
             arrayOf(
-                arrayOf("X", "X", "O"),
-                arrayOf("O", "O", "X"),
-                arrayOf("X", "O", "X")
-            ),
+                arrayOf(Field.X, Field.X, Field.O),
+                arrayOf(Field.O, Field.O, Field.X),
+                arrayOf(Field.X, Field.O, Field.X)
+            )
         )
     }
 
     @ParameterizedTest
     @MethodSource("provideWinningBoards")
-    fun `Given a winning board, When game checks win, Then win is given`(winningBoard: Array<Array<String>>) {
+    fun `Given a winning board, When game checks win, Then win is given`(winningBoard: Array<Array<Field>>) {
         // Given
 
         // When
@@ -83,7 +84,7 @@ class WinningTest {
 
     @ParameterizedTest
     @MethodSource("provideNotWinningBoards")
-    fun `Given a non-winning board, When game checks win, Then win is not given`(notWinningBoard: Array<Array<String>>) {
+    fun `Given a non-winning board, When game checks win, Then win is not given`(notWinningBoard: Array<Array<Field>>) {
         // Given
 
         // When
