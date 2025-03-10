@@ -12,6 +12,6 @@ class Bot {
             }
         }
 
-        return emptyCells.random()
+        return if (emptyCells.isNotEmpty()) emptyCells.random() else null
     }
 }
