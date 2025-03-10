@@ -1,7 +1,7 @@
 package nl.ns.dojo
 
 enum class Field(
-    val visual: String
+    val symbol: String
 ) {
     Empty(" "),
     X("X"),

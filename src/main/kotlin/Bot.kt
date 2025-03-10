@@ -1,6 +1,8 @@
 package nl.ns.dojo
 
-class Bot {
+class Bot(
+    val symbol: Field
+) {
     fun getRandomMove(board: Array<Array<Field>>): Pair<Int, Int>? {
         val emptyCells = mutableListOf<Pair<Int, Int>>()
 
